@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>おんどくガーデン</title>
+  <meta name="theme-color" content="#fff7cc" />
+  <link rel="stylesheet" href="css/styles.css" />
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#fff7cc">
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>おんどくガーデン 🌱</h1>
+        <div class="sub">音読したらボタンを押してね。なにが咲くかは…ひみつ。</div>
+      </div>
+      <div class="pill" id="statusPill">スタンプ: 0 / 8</div>
+    </header>
+
+    <div class="grid">
+      <section class="card">
+        <h2>きょうのタネ</h2>
+
+        <div class="plantVisual" aria-live="polite">
+          <div class="artBox" id="artBox"></div>
+          <div class="stageName" id="stageName">？？？のたね</div>
+          <div class="hint" id="hint">どんな はなが さくのかな？</div>
+        </div>
+
+        <div class="miniInfo">
+          <div>
+            <div class="k">いまの進み</div>
+            <div class="v" id="stageMeter">ステージ 1 / 8</div>
+          </div>
+          <div style="text-align:right">
+            <div class="k">ずかん</div>
+            <div class="v" id="dexMeter">0 / 10</div>
+          </div>
+        </div>
+
+        <div class="mt12">
+          <button class="bigBtn" id="mainBtn">🎤 おんどくしたよ！</button>
+        </div>
+
+        <div class="row mt10">
+          <button class="smallBtn" id="undoBtn">↩︎ 1つ もどす</button>
+          <button class="smallBtn danger" id="resetBtn">🧹 スタンプ0</button>
+          <button class="smallBtn danger" id="fullResetBtn">🔄 ぜんぶリセット</button>
+          <span class="muted">（端末に保存されます）</span>
+        </div>
+
+        <div class="mt12">
+          <div class="muted">スタンプ（8こで開花）</div>
+          <div class="stampGrid" id="stampGrid"></div>
+        </div>
+      </section>
+
+      <aside class="card">
+        <h2>ずかん</h2>
+        <div class="muted">咲いた花がここにたまるよ。</div>
+
+        <div class="tabs">
+          <button class="tab active" data-tab="dex">📘 ずかん</button>
+          <button class="tab" data-tab="about">🧠 あそびかた</button>
+        </div>
+
+        <div id="tab-dex">
+          <div class="dexGrid" id="dexGrid"></div>
+        </div>
+
+        <div id="tab-about" class="hide">
+          <div class="dexItem">
+            <h3>やることは1つ</h3>
+            <div class="desc">音読したら <b>「おんどくしたよ！」</b> を押すだけ。</div>
+          </div>
+          <div class="dexItem">
+            <h3>タネは ひみつ</h3>
+            <div class="desc">なにが咲くかは、咲くまで分からないよ。</div>
+          </div>
+          <div class="dexItem">
+            <h3>そだつ</h3>
+            <div class="desc">押すたびにすこしずつ成長するよ（8段階）。</div>
+          </div>
+          <div class="dexItem">
+            <h3>リセット</h3>
+            <div class="desc">
+              「スタンプ0」はスタンプだけ。<br>
+              「ぜんぶリセット」は図鑑も全部消えるよ。
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="js/app.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./sw.js").catch(()=>{});
+  }
+</script>
+</body>
+</html>
